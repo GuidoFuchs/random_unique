@@ -5,6 +5,7 @@
 This is a rust version of:
 
 https://preshing.com/20121224/how-to-generate-a-sequence-of-unique-random-integers/
+
 https://github.com/preshing/RandomSequence/tree/master
 
 This is a simple random number generator (don't use if for statistics or cyrpto), with some special properties:
@@ -58,6 +59,6 @@ To run the tests:
 # The tests run for a few minutes, so please be patient
 cargo test --release -- --nocapture 
 
-# This will run even longer
+# To run some additional test-code
 cargo test --release -- --nocapture  ----ignored
 ```
