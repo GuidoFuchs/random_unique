@@ -8,15 +8,15 @@ https://preshing.com/20121224/how-to-generate-a-sequence-of-unique-random-intege
 
 https://github.com/preshing/RandomSequence/tree/master
 
-This is a simple random number generator (don't use if for statistics or cyrpto), with some special properties:
+This is a simple random number generator (don't use if for statistics or crypto), with some special properties:
 * It outputs a unique 32-bit integer each time it is called.  
-* The random numbers are cyclicially repeating after 2^32 numbers.
+* The random numbers are cyclically repeating after 2^32 numbers.
 * All numbers that can be realized as an u32 are used exactly once in this cycle.
 
 
 The core ideas behind this random numbers generators are:
 
-* Start with an number (index) that linearily counts upward from 0 to 0xFFFFFFFF.
+* Start with an number (index) that linearly counts upward from 0 to 0xFFFFFFFF.
 * Transform this number with chained bijective functions (on u32).
 * Use enough bijective functions sequentially, so that after some function calls it looks random enough.
 
@@ -43,7 +43,7 @@ For p the special prime number 4294967291 is used. It is the biggest prime that 
 4294967291 = 0xFFFFFFFF - 5
 3 = 4294967291 % 4
 ```
-Using this prime permutate is bijective.
+Using this prime the permutate function is bijective.
 
 
 ## How to Build
