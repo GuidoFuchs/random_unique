@@ -48,7 +48,7 @@ Using this prime the permutate function is bijective.
 
 ## How to Build
 
-Have a working rust installation:
+Run the example:
 
 ```bash
 cargo run
