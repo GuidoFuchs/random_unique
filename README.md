@@ -34,17 +34,23 @@ add_and_xor(n) = (a + n) xor b  # with a and b being constant
 ```
 
 ```bash
+# https://en.wikipedia.org/wiki/Quadratic_residue
 r(n) = (n * n) % p  # with p being a prime number for which holds 3 = p % 4
 permutate(r(n)) =  r(n) if r(n) <= p/2 else p - r(n)
 ```
 
-For p the special prime number 4294967291 is used. It is the biggest prime that fits in u32.
+For p the special prime number 4294967291 is used.
 ```bash
-4294967291 = 0xFFFFFFFF - 5
-3 = 4294967291 % 4
+4294967291 = 0xFFFFFFFF - 5 # is the largest prime that fits in u32
+4294967291 % 4 = 3  # is a quadratic residue modulo 3
 ```
 Using this prime the permutate function is bijective.
 
+## Possible applications
+
+Transform lists of similar numbers, into very dissimilar numbers.
+
+Generate non-repeating sequences of scrambled numbers.
 
 ## How to Build
 

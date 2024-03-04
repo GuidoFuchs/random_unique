@@ -7,9 +7,9 @@ fn get_seed() -> (u32, u32) {
     let since_the_epoch = start
         .duration_since(UNIX_EPOCH)
         .expect("Time went backwards");
-    let seed1  = since_the_epoch.subsec_nanos() as u32;
+    let seed1  = since_the_epoch.subsec_nanos();
     let seed2  = since_the_epoch.as_secs() as u32;
-    return (seed1, seed2);
+    (seed1, seed2)
 }
 
 
@@ -18,9 +18,21 @@ fn get_seed() -> (u32, u32) {
 fn main() {
     let seed = get_seed();
 
-    // Seed could be replaced by any two u32 numbers.
+    // Seed can be replaced by any two u32 numbers.
+
     let mut r = random_unique::RandomSequenceOfUniqueU32::new(seed.0, seed.1);
-    for _i in 0..10{
-        println!("{}", r.next());
+    println!("Random numbers, with changing seed: ");
+    for _i in 0..4{
+        println!("    {}", r.next_nr());
+    } 
+    r.re_seed(0,0);
+    println!("Random numbers, with fixed seed: ");
+    for _i in 0..4{
+        println!("    {}", r.next_nr());
+    }
+    r.re_seed(42, 127);
+    println!("Deterministic Scrambling numbers u32 -> u32: ");
+    for i in 0..4{
+        println!("    {} -> {}",i, r.scramble_number(i));
     }
 }
